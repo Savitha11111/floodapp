@@ -1,0 +1,2 @@
+rootProject.name = 'floodapp'
+include ':app'
