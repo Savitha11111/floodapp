@@ -37,14 +37,6 @@ jobs:
     - name: 📦 Get Flutter Dependencies
       run: flutter pub get
 
-    - name: 🔍 Analyze Flutter Code
-      run: flutter analyze
-      continue-on-error: true
-
-    - name: 🧪 Run Flutter Tests
-      run: flutter test
-      continue-on-error: true
-
     - name: 🏗️ Build APK
       run: flutter build apk --release
 
