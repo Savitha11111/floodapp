@@ -29,38 +29,32 @@ jobs:
         
     - name: 📦 Get Flutter Dependencies
       run: flutter pub get
-      working-directory: ./floodscope_mobile
       
     - name: 🔍 Analyze Flutter Code
       run: flutter analyze
-      working-directory: ./floodscope_mobile
       continue-on-error: true
       
     - name: 🧪 Run Flutter Tests
       run: flutter test
-      working-directory: ./floodscope_mobile
       continue-on-error: true
       
     - name: 🏗️ Build APK
       run: flutter build apk --release --verbose
-      working-directory: ./floodscope_mobile
       
     - name: 📱 Get APK Info
       run: |
         echo "APK Size: $(du -h build/app/outputs/flutter-apk/app-release.apk | cut -f1)"
         echo "APK Path: $(pwd)/build/app/outputs/flutter-apk/app-release.apk"
-      working-directory: ./floodscope_mobile
       
     - name: 📋 Rename APK
       run: |
         mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
-      working-directory: ./floodscope_mobile
       
     - name: 🚀 Upload APK Artifact
       uses: actions/upload-artifact@v4
       with:
         name: FloodScope-AI-APK
-        path: floodscope_mobile/build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
+        path: build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
         retention-days: 30
         
     - name: 📱 Create Release
