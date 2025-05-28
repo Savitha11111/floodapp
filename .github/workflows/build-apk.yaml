@@ -28,27 +28,25 @@ jobs:
         channel: 'stable'
 
     - name: 📦 Get Flutter Dependencies
-      working-directory: floodscope_mobile
       run: flutter pub get
 
     - name: 🏗️ Build APK
-      working-directory: floodscope_mobile
       run: flutter build apk --release --verbose
 
     - name: 📱 Get APK Info
       run: |
-        echo "APK Size: $(du -h floodscope_mobile/build/app/outputs/flutter-apk/app-release.apk | cut -f1)"
-        echo "APK Path: $(pwd)/floodscope_mobile/build/app/outputs/flutter-apk/app-release.apk"
+        echo "APK Size: $(du -h build/app/outputs/flutter-apk/app-release.apk | cut -f1)"
+        echo "APK Path: $(pwd)/build/app/outputs/flutter-apk/app-release.apk"
 
     - name: 📋 Rename APK
       run: |
-        mv floodscope_mobile/build/app/outputs/flutter-apk/app-release.apk floodscope_mobile/build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
+        mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
 
     - name: 🚀 Upload APK Artifact
       uses: actions/upload-artifact@v4
       with:
         name: FloodScope-AI-APK
-        path: floodscope_mobile/build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
+        path: build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
         retention-days: 30
 
     - name: 📱 Create Release
@@ -88,6 +86,6 @@ jobs:
           ✅ Smart alerts  
           
           **Compatible with Android 5.0+ devices**
-        files: floodscope_mobile/build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
+        files: build/app/outputs/flutter-apk/FloodScope-AI-v${{ github.run_number }}.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
