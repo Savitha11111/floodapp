@@ -4,9 +4,9 @@ import '../models/flood_data.dart';
 import '../models/weather_data.dart';
 
 class ApiService {
-  static const String openWeatherApiKey = 'YOUR_OPENWEATHER_API_KEY';
-  static const String ambeeApiKey = 'YOUR_AMBEE_API_KEY';
-  static const String cohereApiKey = 'YOUR_COHERE_API_KEY';
+  static const String openWeatherApiKey = '124764ff70f72f2e64aef8c99eac4394';
+  static const String ambeeApiKey = '6094cb31937c21dcbd945f7528b59d74790edd2e6e71d6340259d24eb4ee5536';
+  static const String cohereApiKey = 'Iq0oARg9yFRYTkzoey08m8JK00RlwoTyUgnw3r7O';
   
   final Dio _dio = Dio();
 
