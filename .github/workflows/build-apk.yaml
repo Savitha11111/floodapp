@@ -29,12 +29,10 @@ jobs:
         
     - name: 📦 Get Flutter Dependencies
       run: |
-        cd floodscope_mobile
         flutter pub get
       
     - name: 🏗️ Build APK
       run: |
-        cd floodscope_mobile
         flutter build apk --release --verbose
       
     - name: 📱 Get APK Info
